@@ -8,3 +8,10 @@
   var x = 10;
   var y = "10";
   if (x === y)
+
+#### 浮点型数据使用注意事项
+###JavaScript 中的所有数据都是以 64 位浮点型数据(float) 来存储。所有的编程语言，包括 JavaScript，对浮点型数据的精确度都很难确定：
+var x = 0.1;
+var y = 0.2;
+var z = x + y            // z 的结果为 0.3
+if (z == 0.3)            // 返回 false
