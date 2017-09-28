@@ -1,1 +1,33 @@
+####命令行模式和Python交互模式
 
+*   1、看到类似c:\>是在Windows提供的命令行模式，在命令行模式下，可以执行python进入Python交互式环境，也可以执行python hello.py运行一个.py文件。
+
+*   2、看到>>>是在Python交互式环境下，在Python交互式环境下，只能输入Python代码并立刻执行。
+
+#####此外，在命令行模式运行.py文件和在Python交互式环境下直接运行Python代码有所不同。Python交互式环境会把每一行Python代码的结果自动打印出来，但是，直接运行Python代码却不会。
+
+例如，在Python交互式环境下，输入：
+
+<pre><code>>>> 100 + 200 + 300
+600
+</code></pre>
+直接可以看到结果600。<br/>
+但是，写一个calc.py的文件，内容如下：
+
+<pre><code>100 + 200 + 300
+</code></pre>
+然后在命令行模式下执行：
+
+<pre><code>C:\work>python calc.py
+</code></pre>
+发现什么输出都没有。
+
+这是正常的。想要输出结果，必须自己用print()打印出来。把calc.py改造一下：
+
+<pre><code>print(100 + 200 + 300)
+</code></pre>
+再执行，就可以看到结果：
+
+<pre><code>C:\work>python calc.py
+600
+</code></pre>
