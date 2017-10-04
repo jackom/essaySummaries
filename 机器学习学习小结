@@ -301,3 +301,27 @@ B 这是一项观察性研究，因此我们不可以对安慰剂相比运动和
 </code></pre>
 
 答案是：A
+
+请输入中国、德国和日本的相对频率。
+<pre><code>国家	频率(frequency)	相对频率(relative frequency)
+加拿大	       2	            2/50 = 0.04
+中国	       12	             请输入
+英国	       2
+德国	       3 	             请输入
+印度	       8
+日本	       8	             请输入
+墨西哥	       3
+巴基斯坦	  1	
+瑞典	       1
+美国	       10	
+</code></pre>
+
+0.02(英文念法：point zero two)
+0.12(英文念法：point twelve)
+proportion(比例) percentage(百分比)
+
+区间或容器(组距)或桶(interval or bin or bucket)，大多数情况下，我们将称之为区间或容器
+
+bar graph(柱状图),x轴(x-axis)，直方图(histogram)
+
+组距是指对频率进行计数的区间
