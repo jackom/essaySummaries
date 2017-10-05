@@ -325,3 +325,44 @@ proportion(比例) percentage(百分比)
 bar graph(柱状图),x轴(x-axis)，直方图(histogram)
 
 组距是指对频率进行计数的区间
+
+直方图(一般是各个柱子黏在一起)：可以选择任何区间或组距；直方图的形状非常重要；x轴上的变量是数值(numerical)和可以量化的(quantitative)
+
+柱状图(一般是分开的柱子)：即使改变区间或组距，但是限制很多；柱状图的形状却是任意的，取决于你如何在x轴上排列各个类别;x轴上的变量通常是分类(categorical)或定性的(qualitative)
+
+正态分布（normal distribution），正态分布会存在一个峰值(peak)，叫做众数(mode)。
+
+刻度线(tick mark)
+
+数据可视化(data visualization)
+
+课程7：习题集2a：数据可视化，16.练习：30.X轴代表！
+这个直方图的 X 轴可能代表什么？选择所有可能的选项。
+<pre><code>A、 频率
+B、 国家
+C、 年龄
+D、 颜色
+E、 价格（美元）
+F、 长度（米）
+</code></pre>
+
+提示：直方图的 X 轴应该代表类别数据，还是数值数据？ 肯定是数值啦！
+
+答案是：C,E,F
+
+偏度()：正偏斜分布(positively skewed)，负偏斜分布(negatively skewed)，正态分布(normal)
+
+频率表(frequency table)
+
+勾选关于频率表和直方图所有正确的选项。
+<pre><code>A、 可以很好地可视化分布的形状
+B、 可以很好地得出样本或总体的总数
+C、 可以从根据频率表创建直方图，也可以根据直方图创建频率表
+</code></pre>
+
+频率表：B;  
+直方图：A,C
+
+Σ 符号是希腊字母西格玛的大写形式，表示总数。
+
+相对频率(relative frequency)总和是100%
