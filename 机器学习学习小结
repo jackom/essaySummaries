@@ -330,7 +330,7 @@ bar graph(柱状图),x轴(x-axis)，直方图(histogram)
 
 柱状图(一般是分开的柱子)：即使改变区间或组距，但是限制很多；柱状图的形状却是任意的，取决于你如何在x轴上排列各个类别;x轴上的变量通常是分类(categorical)或定性的(qualitative)
 
-正态分布（normal distribution），正态分布会存在一个峰值(peak)，叫做众数(mode)。
+正态分布（normal distribution），正态分布会存在一个峰值(peak，也即是频率最高处的值)，叫做众数(mode)。
 
 刻度线(tick mark)
 
@@ -366,3 +366,19 @@ C、 可以从根据频率表创建直方图，也可以根据直方图创建频
 Σ 符号是希腊字母西格玛的大写形式，表示总数。
 
 相对频率(relative frequency)总和是100%
+
+平方偏差(squared deviations)
+
+xbar 平均值(mean)
+
+sum of squares(平方和),简称SS
+
+variance(方差)
+
+standard deviation(标准偏差)
+
+标准偏差，用希腊符号(Greek symbol) ∑(Sigma)表示
+
+#####（variance)是在概率论和统计方差衡量随机变量或一组数据时离散程度的度量。概率论中方差用来度量随机变量和其数学期望（即均值）之间的偏离程度。统计中的方差（样本方差）是各个数据分别与其平均数之差的平方的和的平均数。（参考链接：http://blog.csdn.net/Leyvi_Hsing/article/details/54022612）
+
+中位数(又称中值，英语：Median)
