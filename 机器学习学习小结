@@ -496,3 +496,13 @@ C、IQR 不受异常值的影响。
 
 我们用箱线图(也叫盒须图)来更直观地表示四分位数和异常值，英文翻译为：We visualize quartiles and outliers with box plots also called box and whisker
 
+IQR的不足：值域(Max-Min的值)和IQR都无法将所有数据考虑进去，完全不同的两个数据集也可以有相同的IQR，例如正态分布(normal distribution)、双峰分布(bimodal distribution)以及均匀分布(uniform distribution)
+
+
+下列哪个是衡量差异性最好的选项？选择您最认为最好的选项。
+<pre><code>A、 找出任意两个值之间差的平均值
+B、 找出每个值与最大值或最小值之间差的平均值
+C、 找出每个值与数据集均值之间差的平均值
+</code></pre>
+
+答案：C
