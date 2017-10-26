@@ -780,6 +780,8 @@ t值(t-statistics)
 
 相依样本(paired samples)，t statistics = (差异的点估计，也即是两个样本的均值差)/(S/n的开平方根)
 
+配对检验法(PairedTest)
+
 拒绝零假设或者接受零假设，其实可以通过t statistics 与 t critical value来判断。
 
 paired samples的效应量衡量指标(Cohen's d)的值 = 均值差异 / 差异标准偏差(分母是按照n-1计算)
@@ -975,5 +977,18 @@ t检验的好处是我们不需要知道总体参数，但是我们需要知道�
 - R^2测量的是自变量的引起的差异在整体差异中所占的比例。   T
 - 重复测量设计的好处是转移影响（carryover）小于主体之间between-subject的影响。   F
 
-可参考资料：https://www.zhengweiyu.com/program.html
+可参考资料：
+1.	维基百科：https://zh.wikipedia.org/wiki/斯特鲁普效应
+2.	http://latex.codecogs.com/eqneditor/editor.php 在线数学公式编辑
+3.	http://www.statisticshowto.com/when-to-use-a-t-score-vs-z-score/
+4.	https://www.graphpad.com/quickcalcs/pValue1/   P值计算
+5.	https://faculty.washington.edu/chudler/java/ready.html  实验
+6.	https://s3.amazonaws.com/udacity-hosted-downloads/t-table.jpg   t表格
+7. https://www.zhengweiyu.com/program.html
+8. http://support.minitab.com/zh-cn/minitab/17/topic-library/basic-statistics-and-graphs/hypothesis-tests/tests-of-means/types-of-t-tests/
+9. http://www.statstutor.ac.uk/resources/uploaded/paired-t-test.pdf
+10. http://blog.minitab.com/blog/statistics-and-quality-data-analysis/what-are-degrees-of-freedom-in-statistics
+
+
+
 
