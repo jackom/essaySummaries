@@ -133,5 +133,43 @@ python中，我们不能把数字和字符串合并在一起，但是我们可�
 
 查找字符串中的字符串，使用find方法，<string>.find(<str>),返回的是要查找的字符串在总的字符串中第一次出现的位置(posiiton)，以index为0开始计算，如果找不到，那么将会返回-1
 
+<pre><code>>>> a = 'abfo12'
+>>> print a[1:4]
+bfo
+>>> print a[4:1]
+
+>>>
+</code></pre>
+
+<pre><code>def say_hello(name):
+    greeting = "Hello " + name + "!"
+    return greeting
+
+print say_hello("Miriam")
+print say_hello("Andy")</code></pre>
+得到的 输出 是这样的：
+
+<pre><code>Hello Miriam!
+Hello Andy!</code></pre>
+
+sum 过程的作用是什么？
+
+<pre><code>def sum(a, b):
+    a = a + b</code></pre>
+
+答案：什么也不做，因为没有return a这样的代码
+
+下面的代码中，sum 过程的作用是什么？
+
+<pre><code>def sum(a, b):
+    a = a + b #注意：第一个a是变量
+    return a</code></pre>
+    
+答案：输入两个数字，输出它们的和 或 
+输入两个字符串，输出它们合并后的字符串
 
 
+
+
+
+    
