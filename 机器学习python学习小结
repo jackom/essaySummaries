@@ -187,5 +187,54 @@ sum 过程的作用是什么？
 - …右括号 )
 
 
-
+python中：
+<pre><code>print "hello" == "hello"</code></pre>
+结果为true
     
+<pre><code>if 10 > 20: 
+    print "Did you know that 10 is greater than 20!?"
+else:
+    print "20 is greater than 10"</code></pre>
+    
+<pre><code>print True or False
+print False or True
+print True or True
+print False or False
+print False or this_is_an_error
+print True or this_is_an_error
+print this_is_an_error or True</code></pre>
+
+执行结果如下：True True True False False True 提示this_is_an_error未定义
+
+备注：这里面的True和False不能写成true或false，不然会提示true或false未定义的异常
+
+
+<pre><code># This uses a while loop to remove all the spaces from a string of
+# text. Can you figure out how it works?
+def remove_spaces(text):
+    text_without_spaces = '' #empty string for now
+    while text != '':
+        next_character = text[0]
+        if next_character != ' ':    #that's a single space
+            text_without_spaces = text_without_spaces + next_character
+        text = text[1:]
+    return text_without_spaces
+print remove_spaces("hello my name is andy how are you?")</code></pre>
+
+结果：hellomynameisandyhowareyou?
+
+python中，字符串 + 数字会报错
+<pre><code>def printInches(n):
+    print n + " inches"
+printInches(42)</code></pre>
+
+报错为：<pre><code>TypeError: unsupported operand type(s) for +: 'int' and 'str'</code></pre>
+改为如下即可：
+<pre><code>def printInches(n):
+    print str(n) + " inches"
+printInches(42)</code></pre>
+
+
+ <pre><code>print "# location", location</code></pre>
+ 
+ 
