@@ -237,4 +237,75 @@ printInches(42)</code></pre>
 
  <pre><code>print "# location", location</code></pre>
  
- 
+####调试策略总结
+在这节课里，我们介绍了 5 种调试策略。
+
+- 当程序崩溃时，查看错误消息
+
+	######Python Traceback 的最后一行将告诉你哪里出错了。从这里往前阅读可以帮你找到出现问题的地方。
+- 在示例代码的基础上编写代码
+	######如果修改后的代码不能运行，注释掉编写的代码，并逐步修改示例代码，直到达到期望的结果。
+- 确保示例代码可以运行
+	######找到示例代码并不能保证示例代码能够在你的系统里运行。检查正在使用的示例代码，确保能按照你的预期运行。
+- 检查（输出）中间结果
+	######当你的代码没有崩溃，但是行为没有达到预期效果时，你可以向程序中添加输出语句，看看代码中的哪些部分开始出错了。
+- 保留并对比旧版本
+	######当你的代码可以运行时，先保存一个版本，然后再向其中添加代码。这样如果你引入了太多新的 bug，还可以返回到该版本。
+	
+####良好的注释内容可以帮助调试代码
+#####1) 不要为“作用明显的代码”添加注释
+######随着你的编程技能不断增长，“作用明显的代码”的含义也会改变，但是一般而言，如果代码含义清晰，无需解释，则不需要为其添加注释。以下注释就是多余的：
+
+ <pre><code>print "Hello" # prints hello</code></pre>
+直接写 print "Hello" 就够了。
+
+####2) 定义函数时添加注释
+######所有函数开始定义时都需要添加注释，描述预期的输入和输出结果，并解释函数的作用。这样可以帮助其他人了解函数的目的。例如：
+
+ <pre><code>def isLeapYear(year):
+    # takes a number as input and outputs True if the number
+    # represents a leap year and False otherwise</code></pre>
+######在 Python（并非所有语言）中，你还可以使用 docstring 为函数添加注释。docstring 是多行字符串，充当函数的描述性注释，但是当代码执行时，计算机会保留这些内容，并且在代码运行时用户可以访问这些内容。
+
+ <pre><code>def isLeapYear(year):
+    '''takes a number as input and outputs True if the number
+    represents a leap year and False otherwise'''</code></pre>
+######在 IPND 中，你可以选择使用注释或 docstring，但是应该保持一致。类（将在第 3 阶段介绍） 也应该遵守这一规则。
+
+####3) 及时更新注释
+######如果你更改代码后，没有更新注释的话，则很容易令人困惑。确保及时更新注释，避免阅读代码的其他人（或者你自己很长时间之后再去阅读这些代码）感到迷惑不清。毕竟注释的主要目的就是当代码出现错误时，帮助其他人了解你的代码应该实现的作用。如果你的注释提供了错误的信息，则很难实现这一目的!
+
+####4) 简明扼要
+######注释应该简短，仅解释代码最重要的信息。如果你需要写很长的注释来解释不容易看懂的代码部分，那么可能需要重新思考解决问题的方法了。通常，完善的代码只需少量的注释。写的很差的代码可能需要大量注释去解释！
+
+计算中位数：
+ <pre><code>def bigger(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+def biggest(a,b,c):
+    return bigger(a,bigger(b,c))
+def median(a, b, c):
+    big = biggest(a,b,c)
+    if big == a:
+        return bigger(b, c)
+    if big == b:
+        return bigger(a, c)
+    if big == c:
+        return bigger(a, b)
+print(median(1,2,3))
+print(median(9,3,6))
+print(median(7,8,7))</code></pre>
+
+随机数：
+ <pre><code>from random import randint
+def random_verb():
+    # your code here 
+    random_num = randint(0, 1)
+    if random_num == 0:
+        return 'run'
+    if random_num == 1:
+        return 'kayak'
+print random_verb()</code></pre>
+
