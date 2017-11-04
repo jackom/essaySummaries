@@ -309,3 +309,330 @@ def random_verb():
         return 'kayak'
 print random_verb()</code></pre>
 
+####复杂的方法(计算Mad Lib过程)
+ <pre><code>\# Let's put it all together. Write code for the function process_madlib, which takes in 
+\# a string "madlib" and returns the string "processed", where each instance of
+\# "NOUN" is replaced with a random noun and each instance of "VERB" is 
+\# replaced with a random verb. You're free to change what the random functions
+\# return as verbs or nouns for your own fun, but for submissions keep the code the way it is!
+
+from random import randint
+def random_verb():
+    random_num = randint(0, 1)
+    if random_num == 0:
+        return "run"
+    else:
+        return "kayak"   
+def random_noun():
+    random_num = randint(0,1)
+    if random_num == 0:
+        return "sofa"
+    else:
+        return "llama"
+def word_transformer(word):
+    if word == "NOUN":
+        return random_noun()
+    elif word == "VERB":
+        return random_verb()
+    else:
+        return word[0]       
+def process_madlib(mad_lib):
+    processed = ''
+    singleText = ''
+    n = 0;
+    # your code here
+    # you may find the built-in len function useful for this quiz
+    # documentation: https://docs.python.org/2/library/functions.html#len
+    while n < len(mad_lib):
+        if singleText == 'N':
+            if len(mad_lib[n:]) >= 3:
+                tmpNStr = mad_lib[n:n+3]
+                if 'N' + tmpNStr == 'NOUN':
+                    processed = processed[:len(processed) - 1] + word_transformer('N' + tmpNStr)
+                    n += 3
+                else:
+                    singleText = mad_lib[n]
+                    processed += singleText
+                    n += 1
+            else:
+                singleText = mad_lib[n]
+                processed += singleText
+                n += 1
+        if singleText == 'V':
+                if len(mad_lib[n:]) >= 3:
+                    tmpVStr = mad_lib[n:n+3]
+                    if 'V' + tmpVStr == 'VERB':
+                        processed = processed[:len(processed) - 1] + word_transformer('V' + tmpVStr)
+                        n += 3
+                    else:
+                        singleText = mad_lib[n]
+                        processed += singleText
+                        n += 1
+                else:
+                    singleText = mad_lib[n]
+                    processed += singleText
+                    n += 1
+        else:
+            singleText = mad_lib[n]
+            processed += singleText
+            n += 1
+    return processed
+test_string_1 = "This is a good NOUN to use when you VERB your food"
+test_string_2 = "I'm going to VERB to the store and pick up a NOUN or two."
+print process_madlib(test_string_1)
+print process_madlib(test_string_2)</code></pre>
+
+####简单的方法(计算Mad Lib过程)
+ <pre><code>\# Let's put it all together. Write code for the function process_madlib, which takes in 
+\# a string "madlib" and returns the string "processed", where each instance of
+\# "NOUN" is replaced with a random noun and each instance of "VERB" is 
+\# replaced with a random verb. You're free to change what the random functions
+\# return as verbs or nouns for your own fun, but for submissions keep the code the way it is!
+
+from random import randint
+def random_verb():
+    random_num = randint(0, 1)
+    if random_num == 0:
+        return "run"
+    else:
+        return "kayak"   
+def random_noun():
+    random_num = randint(0,1)
+    if random_num == 0:
+        return "sofa"
+    else:
+        return "llama"
+def word_transformer(word):
+    if word == "NOUN":
+        return random_noun()
+    elif word == "VERB":
+        return random_verb()
+    else:
+        return word[0]       
+def process_madlib(mad_lib):
+    processed = ''
+    box_length = 4
+    index = 0
+    # your code here
+    # you may find the built-in len function useful for this quiz
+    # documentation: https://docs.python.org/2/library/functions.html#len
+    while index < len(mad_lib):
+        frame = mad_lib[index : index + box_length]
+        add_to_processed = word_transformer(frame)
+        processed += add_to_processed
+        if len(add_to_processed) == 1:
+            index += 1
+        else:
+            index += 4
+    return  processed 
+test_string_1 = "This is a good NOUN to use when you VERB your food"
+test_string_2 = "I'm going to VERB to the store and pick up a NOUN or two."
+print process_madlib(test_string_1)
+print process_madlib(test_string_2)</code></pre>
+
+
+####列表(lists)
+<pre><code>\# Here's a chance to play around with lists for a bit before you continue
+\# Take a look at what the following code does and try to guess how it works.
+
+print "EXAMPLE 1: Lists can contain strings"
+string_list = ['HTML', 'CSS', 'Python']
+print string_list
+
+print "EXAMPLE 2: Lists can contain numbers"
+number_list = [3.14159, 2.71828, 1.61803]
+print number_list
+
+print "EXAMPLE 3: Lists can be 'accessed' and 'sliced' like how we accessed and sliced strings in the previous lessons"
+pi = number_list[0]
+not_pi = number_list[1:]
+print pi
+print not_pi
+
+print "EXAMPLE 4: Lists can contain strings AND numbers"
+mixed_list = ['Hello!', 42, "Goodbye!"]
+print mixed_list
+
+print "Example 5: Lists can even contain other lists"
+list_with_lists = [3, 'colors:', ['red', 'green', 'blue'], 'your favorite?']
+print list_with_lists
+
+答案：
+EXAMPLE 1: Lists can contain strings
+['HTML', 'CSS', 'Python']
+EXAMPLE 2: Lists can contain numbers
+[3.14159, 2.71828, 1.61803]
+EXAMPLE 3: Lists can be 'accessed' and 'sliced' like how we accessed and sliced strings in the previous lessons
+3.14159
+[2.71828, 1.61803]
+EXAMPLE 4: Lists can contain strings AND numbers
+['Hello!', 42, 'Goodbye!']
+Example 5: Lists can even contain other lists
+[3, 'colors:', ['red', 'green', 'blue'], 'your favorite?']
+</code></pre>
+
+备注：python中，lists列表中的元素可以是字符、字符串、数字等类型的集合，如：
+
+下面的42.表示浮点数
+<pre><code>mixed_list = ['Hello!', 42., "Goodbye!"]
+
+list_with_lists = [3, 'colors:', ['red', 'green', 'blue'], 'your favorite?']</code></pre>
+
+#####嵌套列表(nested lists)如下：
+<pre><code>beatles = [['John', 1940], ['Paul', 1942],
+			['George', 1943], ['Ringo', 1940]]
+
+print beatles[3][1]</code></pre>
+答案：1940
+
+####变更（mutation）和别名（aliasing）
+
+字符串和列表额主要区别有两种：
+
+- 列表可以包含任何类型的元素，而字符串的元素只能是字符；
+- 列表可变，这意味着我们创建了列表后，还能改变它的值
+
+
+字符串：
+<pre><code>s = 'Hello'
+s[0] = 'Y'</code></pre>
+报错：<pre><code>TypeError: 'str' object does not support item assignmen</code></pre>
+如果是lists列表：
+
+<pre><code>p = ['H', 'e', 'l', 'l', 'o']
+q = p
+p[1] = 5
+print p
+print q
+
+['H', 5, 'l', 'l', 'o']
+['H', 5, 'l', 'l', 'o']</code></pre>
+
+我们把用两种不同方式指代同一对象称为别名使用(aliasing)
+
+<pre><code>p = ['H', 'e', 'l', 'l', 'o']
+q = p
+p[1] = 5
+p = [0, 0, 7]
+print '#p', p
+print '#q', q
+
+#p [0, 0, 7]
+#q ['H', 5, 'l', 'l', 'o']</code></pre>
+
+操作符：append，+(plus)，len，append操作符作用是在list结尾增加一个元素，不会创建新的列表；而 + 操作符是例如 [1, 2] + [3, 4]，它会合并两个列表成为一个新的列表；len操作需要一个列表作为输入参数，它的输出是列表的元素个数，即列表第一层的元素个数
+
+
+<pre><code>p =[1,2]
+q = [3,4]
+p.append(q)
+q[1] = 5
+print len(p)
+print p
+
+3
+[1, 2, [3, 5]]</code></pre>
+
+<pre><code>print "EXAMPLE 1: We can use for loops to go through a list of strings"
+example_list_1 = ['a', 'b', 'c', 'd']
+for thing in example_list_1:
+    print thing
+    
+
+print "EXAMPLE 2: We can use for loops on nested lists too!"
+example_list_2 = [['China', 'Beijing'],
+                  ['USA'  , 'Washington D.C.'],
+                  ['India', 'Delhi']]
+for country_with_capital in example_list_2:
+    country = country_with_capital[0]
+    capital = country_with_capital[1]
+    print capital + ' is the capital of ' + country
+    
+    
+a
+b
+c
+d
+EXAMPLE 2: We can use for loops on nested lists too!
+Beijing is the capital of China
+Washington D.C. is the capital of USA
+Delhi is the capital of India
+</code></pre>
+
+內建(built-in) index
+
+<pre><code>p = [0, 1, 2, 2, 4]
+print p.index(2)
+print p.index(5)</code></pre>
+
+index : 如果传入的值存在于列表中，该方法将返回找到这个值的第一个位置，如果这个值在列表中找不到，该方法就会显示出错：
+<pre><code>ValueError: 5 is not in list</code></pre>
+
+#####\<value> in \<list>
+
+<pre><code>p = [1, 2, 4]
+print 1 in p
+print 5 in p
+
+True
+False</code></pre>
+
+#####\<value\> not in \<list\>，这个完全等同于 not \<value> in \<list>
+
+<pre><code>\# Define a procedure, find_element,
+\# using index that takes as its
+\# inputs a list and a value of any
+\# type, and returns the index of
+\# the first element in the input
+\# list that matches the value.
+
+\# If there is no matching element,
+\# return -1.
+
+def find_element(p, t):
+    if t in p:
+        return p.index(t)
+    return -1
+
+print find_element([1,2,3],3)
+#>>> 2
+
+print find_element(['alpha','beta'],'gamma')
+#>>> -1
+</code></pre>
+
+解决问题的方法：
+- What are the inputs?
+- What are the outputs?
+- Work through some examples by hand
+- Simple mechanical solution(Simple and Correct)
+
+Don't optimize prematurely(过早地)!
+
+
+伪码(pseudocode)
+
+docstring(文档字符串)  课程12：如何解决问题，22练习：定义简化版nextDay
+
+多行注释
+<pre><code>
+'''
+s = 'Hello'
+s[0] = 'Y'
+'''
+</code></pre>
+
+<pre><code>
+def nextDay(year, month, day):
+	return year, month, day
+
+print nextDay(2017, 11, 4)
+</code></pre>
+输出：(2017， 11， 4) 用括号包起来的
+
+断言(assertion)
+
+<pre><code>assert &lt;Expression>
+        False => fail
+</code></pre>        
+
