@@ -784,4 +784,40 @@ def play_game(ml_string, parts_of_speech):
     
 print play_game(test_string1, parts_of_speech1)  </code></pre>
 
-     
+
+<pre><code>在 string translate 的 Python 文档中，你将看到
+
+string.translate(s, table[, deletechars])
+
+注意有三个参数（即函数输入项）s、table 和可选参数 deletechars（因为它位于方括号里，所以是可选参数）。但是视频中只显示了两个参数：table 和 deletechars。别担心，稍后会解释的，暂时请记住以下技巧：
+
+import string
+
+string.translate(file_name,None,'0123456789')
+
+等同于（将 file_name 放在前面，替换 string 模块）：
+
+file_name.translate(None,'0123456789')</code></pre>
+
+
+遍历某个文件夹中的所有文件，将含有数字的所有文件名更改为不含数字的文件名，如下为实现demo
+<pre><code>#coding=utf-8
+import os
+def rename_files():
+	#(1) get file names from a folder
+	file_list = os.listdir(r"/Users/jackom/Downloads/prank")# r代表raw pack(原包装)，它会告诉python直接接受这个字符串本身，不要用其他方式解读它
+	print file_list
+	saved_path = os.getcwd()
+	print ("saved_path -" + saved_path)
+	os.chdir(r"/Users/jackom/Downloads/prank")#更改工作目录
+	#(2) for each file, rename filename
+	for file_name in file_list:
+		print ("old name ---> " + file_name)
+		print ("new name ---> " + file_name.translate(None, "0123456789"))
+		os.rename(file_name, file_name.translate(None, "0123456789"))
+	os.chdir(saved_path)
+rename_files()</code></pre>
+	
+	
+备注：字符串与list列表不能通过 + 连接符连接起来，否则会报错
+
