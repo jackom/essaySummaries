@@ -821,3 +821,26 @@ rename_files()</code></pre>
 	
 备注：字符串与list列表不能通过 + 连接符连接起来，否则会报错
 
+#####使用 What Do You Love 检查是否存在冒犯用语
+
+http://www.wdylike.appspot.com/?q=shot
+
+google python编码规范:https://google.github.io/styleguide/pyguide.html
+
+Class
+Instance
+Constructor
+Self 指的是类自己或者是将要被创建的该类的实例
+Instance Variables(实例变量)
+Instance methods(在类中定义跟某个实例相关的函数，称为实例方法)
+Class Variables(类变量)
+
+__doc__ 两个下划线
+
+芝加哥大学图书馆：http://www2.lib.uchicago.edu/keith/courses/python/class/5/
+
+inheritance(继承)
+
+Learn Python the Hard Way的链接：https://learnpythonthehardway.org/book/ex42.html
+
+
