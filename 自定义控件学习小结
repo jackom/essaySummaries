@@ -67,3 +67,5 @@ Path方法第二类：辅助的设置或计算
 
 Path.setFillType(Path.FillType ft) 设置填充方式
 
+##自定义 View 1-2 Paint 详解
+

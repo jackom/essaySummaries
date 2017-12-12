@@ -501,6 +501,15 @@ set和dict的唯一区别仅在于没有存储对应的value，但是，set的�
 
 对于不变对象来说，调用对象自身的任意方法，也不会改变该对象自身的内容。相反，这些方法会创建新的对象并返回，这样，就保证了不可变对象本身永远是不可变的。
 
+
+#####Python内置了很多有用的函数，我们可以直接调用。
+
+要调用一个函数，需要知道函数的名称和参数，比如求绝对值的函数abs，只有一个参数。可以直接从Python的官方网站查看文档：
+
+http://docs.python.org/3/library/functions.html#abs
+
+也可以在交互式命令行通过help(abs)查看abs函数的帮助信息。<b>其中，在交互式命令行里面输入 help(abs)后，可通过输入 q 退出当前界面</b>
+
 函数名其实就是指向一个函数对象的引用，完全可以把函数名赋给一个变量，相当于给这个函数起了一个”别名”：
 
 
@@ -511,4 +520,18 @@ set和dict的唯一区别仅在于没有存储对应的value，但是，set的�
 
 
 函数： 定义的函数如果没有return语句，函数执行完毕后也会返回结果，只是结果为None。return None可以简写为return
+
+
+对参数类型做检查，只允许整数和浮点数类型的参数。数据类型检查可以用内置函数isinstance()实现：
+<pre><code>def my_abs(x):
+    if not isinstance(x, (int, float)):
+        raise TypeError('bad operand type')
+    if x >= 0:
+        return x
+    else:
+        return -x
+</code></pre>
+
+
+函数返回多个值：函数可以同时返回多个值，但其实就是一个tuple。在语法上，返回一个tuple可以省略括号，而多个变量可以同时接收一个tuple，按位置赋给对应的值，所以，Python的函数返回多值其实就是返回一个tuple，但写起来更方便。
 
