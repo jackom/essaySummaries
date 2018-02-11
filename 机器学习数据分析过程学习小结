@@ -1,1 +1,42 @@
+数据分析过程(Data Analysis Process)
+#####步骤：
+- Question Phase 需要提出想要回答或解决的问题
+- Wrangling Phase 数据再加工。它包括两个方面：数据采集(data acquisition)和数据整理(data cleaning)。
+- Explore Phase 数据探索，需要培养直觉(build intuition)并找出数据模式(Find patterns)
+- Drawing Conclusions Phase(or make predictions) 熟悉数据之后，通常需要总结或进行预测
+- Communication Phase 与他人交流你的研究结果
+
+Data acquisition([数据整理](https://cn.udacity.com/course/data-wrangling-with-mongodb--ud032))：
+
+- Downloading files
+- Accessing an API
+- Scraping a web page
+- Combine data from different formats
+
+Data format
+CSV(逗号分割值) - Comma Separated Values
+
+CSV文件特点：
+
+- Like a Spreadsheet with no formulas(类似于不含公式的电子表格)
+- Easy to process with code(unlike .xlsx) 比较容易通过代码处理，这与某些文件不同，例如Microsoft Excel使用的XLSX文件 
+
+课程3：数据分析过程，缺失的参与记录
+Investigating First Problem
+
+Why are students missing from daily_engagement?
+
+- Identify surprising data points (Any enrollment record with no corresponding engagement data)
+- Print out one or a few surprising data points
+
+课程3：数据分析过程，检查更多问题记录
+Investigating Data Problems
+1.Identify surprising data points, if any
+2.Print out one or a few surprising points
+3.Fix any problems you find
+
+- More investigation may be necessary
+- or there might not be a problem!
+
+ 
 
