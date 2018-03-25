@@ -22,18 +22,18 @@
 
 - “短期记忆得分”，用户正确猜出某张人脸属于第一部分还是第二部分的比例。
 
-####在BBC的调查中，好记忆力的可操作定义是：
+####在BBC的调查中，好记忆力的可操作定义(operational definition)是：
 <pre><code>正确识别面孔及归属部分的数目的百分比
 </code></pre>
 
-population 总体参数  Average (总体平均数μ mu)
+population 总体参数(抽样总体的平均记忆得分叫做总体参数)  Average (总体平均数μ mu)
 
 sample 样本参数  Average (样本统计数据的平均值X)
 
 #####可视化关系：
 
-<pre><code>X轴上的变量称为自变量或预测变量
-Y轴上的变量称为因变量，也即是结果
+<pre><code>X轴上的变量称为自变量或预测变量(independent variable or the predictor variable)
+Y轴上的变量称为因变量(dependent variable)，也即是结果(outcome)
 </code></pre>
 
 #####调查研究方式：
@@ -42,7 +42,7 @@ Y轴上的变量称为因变量，也即是结果
 当调查对象不理解问题时，我们得到的答案就叫做应答偏差
 当某些人拒绝回答时，就叫做无应答偏差
 
-2、对照实验(这里的对照实验是有效药丸和安慰剂)
+2、对照实验(controlled experiment,这里的对照实验是有效药丸和安慰剂)
 双盲(double blind)实验：意思是参与者和研究人员都不知道参与者接受的是哪种疗法；
 
 单盲(single blind)：是指只有参与者不知道他们的治疗情况。
@@ -318,7 +318,7 @@ B 这是一项观察性研究，因此我们不可以对安慰剂相比运动和
 
 0.02(英文念法：point zero two)
 0.12(英文念法：point twelve)
-proportion(比例) percentage(百分比)
+proportion(比例，例如0.02) percentage(百分比，例如2%)
 
 区间或容器(组距)或桶(interval or bin or bucket)，大多数情况下，我们将称之为区间或容器
 
@@ -326,9 +326,9 @@ bar graph(柱状图),x轴(x-axis)，直方图(histogram)
 
 组距是指对频率进行计数的区间
 
-直方图(一般是各个柱子黏在一起)：可以选择任何区间或组距；直方图的形状非常重要；x轴上的变量是数值(numerical)和可以量化的(quantitative)
+直方图(histogram，一般是各个柱子黏在一起)：可以选择任何区间或组距；直方图的形状非常重要；x轴上的变量是数值(numerical)和可以量化的(quantitative)
 
-柱状图(一般是分开的柱子)：即使改变区间或组距，但是限制很多；柱状图的形状却是任意的，取决于你如何在x轴上排列各个类别;x轴上的变量通常是分类(categorical)或定性的(qualitative)
+柱状图(bar graph，一般是分开的柱子)：即使改变区间或组距，但是限制很多；柱状图的形状却是任意的，取决于你如何在x轴上排列各个类别;x轴上的变量通常是分类(categorical)或定性的(qualitative)
 
 正态分布（normal distribution），正态分布会存在一个峰值(peak，也即是频率最高处的值)，叫做众数(mode)。
 
@@ -989,6 +989,8 @@ t检验的好处是我们不需要知道总体参数，但是我们需要知道�
 9. http://www.statstutor.ac.uk/resources/uploaded/paired-t-test.pdf
 10. http://blog.minitab.com/blog/statistics-and-quality-data-analysis/what-are-degrees-of-freedom-in-statistics
 11. http://stattrek.com/statistics/charts/histogram.aspx?Tutorial=AP
+
+
 
 
 
