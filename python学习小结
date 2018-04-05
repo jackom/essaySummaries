@@ -887,6 +887,35 @@ z = C</code></pre>
 >>> [s.lower() for s in L]
 ['hello', 'world', 'ibm', 'apple']</code></pre> 
 
+<b>**列表推导式：**</b>
+
+<pre><code>def transpose(M):
+    return [list(col) for col in zip(*M)]
+</code></pre> 
+    
+[参考资料一](https://docs.python.org/dev/tutorial/controlflow.html#unpacking-argument-lists)
+[参考资料二](https://python3-cookbook.readthedocs.io/zh_CN/latest/c04/p11_iterate_over_multiple_sequences_simultaneously.html)
+
+<pre><code>def matxMultiply(A,B):
+    _, c = shape(A)
+    r, _ = shape(B)
+    if c != r :
+        raise ValueError
+    Bt = transpose(B)
+    result = [[sum((a*b) for a,b in zip(row,col)) for col in Bt] for row in A]
+    return result
+</code></pre> 
+
+<pre><code>def augmentMatrix(A, b):
+    return [ra + rb for ra,rb in zip(A,b)]
+</code></pre> 
+
+<pre><code>In [1]: a = [1,2,3]
+In [2]: b = [4,5]
+In [3]: a + b
+Out[3]: [1, 2, 3, 4, 5]
+</code></pre> 
+
 #####生成器
 
 通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。
