@@ -1721,3 +1721,171 @@ AttributeError: 'Student' object has no attribute '__name'</code></pre>
 总的来说就是，Python本身没有任何机制阻止你干坏事，一切全靠自觉。
 
 
+<pre><code>>>> import types
+>>> type('abc')==types.StringType
+True
+>>> type(u'abc')==types.UnicodeType
+True
+>>> type([])==types.ListType
+True
+>>> type(str)==types.TypeType
+True</code></pre> 
+最后注意到有一种类型就叫TypeType，所有类型本身的类型就是TypeType，比如：
+<pre><code>>>> type(int)==type(str)==types.TypeType
+True</code></pre> 
+
+可以判断一个变量是否是某些类型中的一种，比如下面的代码就可以判断是否是str或者unicode：
+
+<pre><code>>>> isinstance('a', (str, unicode))
+True
+>>> isinstance(u'a', (str, unicode))
+True</code></pre> 
+由于str和unicode都是从basestring继承下来的，所以，还可以把上面的代码简化为：
+<pre><code>>>> isinstance(u'a', basestring)
+True</code></pre> 
+
+我们自己写的类，如果也想用len(myObj)的话，就自己写一个__len__()方法：
+
+<pre><code>>>> class MyObject(object):
+...     def __len__(self):
+...         return 100
+...
+>>> obj = MyObject()
+>>> len(obj)
+100</code></pre> 
+
+常情况下，当我们定义了一个class，创建了一个class的实例后，我们可以给该实例绑定任何属性和方法，这就是动态语言的灵活性。
+
+给实例绑定一个方法：
+
+<pre><code>>>> def set_age(self, age): # 定义一个函数作为实例方法
+...     self.age = age
+...
+>>> from types import MethodType
+>>> s.set_age = MethodType(set_age, s, Student) # 给实例绑定一个方法
+>>> s.set_age(25) # 调用实例方法
+>>> s.age # 测试结果
+25</code></pre> 
+
+但是，给一个实例绑定的方法，对另一个实例是不起作用的,此时可以给class绑定方法：
+
+<pre><code>>>> def set_score(self, score):
+...     self.score = score
+...
+>>> Student.set_score = MethodType(set_score, None, Student)</code></pre> 
+
+使用__slots__
+但是，如果我们想要限制class的属性怎么办？比如，只允许对Student实例添加name和age属性。
+
+为了达到限制的目的，Python允许在定义class的时候，定义一个特殊的__slots__变量，来限制该class能添加的属性：
+
+<pre><code>>>> class Student(object):
+...     __slots__ = ('name', 'age') # 用tuple定义允许绑定的属性名称
+...</code></pre> 
+
+<pre><code>>>> s = Student() # 创建新的实例
+>>> s.name = 'Michael' # 绑定属性'name'
+>>> s.age = 25 # 绑定属性'age'
+>>> s.score = 99 # 绑定属性'score'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Student' object has no attribute 'score'</code></pre> 
+
+使用__slots__要注意，__slots__定义的属性仅对当前类起作用，对继承的子类是不起作用的：
+
+<pre><code>>>> class GraduateStudent(Student):
+...     pass
+...
+>>> g = GraduateStudent()
+>>> g.score = 9999</code></pre> 
+除非在子类中也定义__slots__，这样，子类允许定义的属性就是自身的__slots__加上父类的__slots__。
+
+装饰器（decorator）可以给函数动态加上功能。对于类的方法，装饰器一样起作用。Python内置的@property装饰器就是负责把一个方法变成属性调用的
+
+Mixin
+Mixin的目的就是给一个类增加多个功能，这样，在设计类的时候，我们优先考虑通过多重继承来组合多个Mixin的功能，而不是设计多层次的复杂的继承关系。
+</br>
+</br>
+现在很多网站都搞REST API，比如新浪微博、豆瓣啥的，调用API的URL类似：
+
+<pre><code>http://api.server/user/friends
+http://api.server/user/timeline/list</code></pre> 
+
+如果要写SDK，给每个URL对应的API都写一个方法，那得累死，而且，API一旦改动，SDK也要改。
+
+利用完全动态的__getattr__，我们可以写出一个链式调用：
+
+<pre><code>class Chain(object):
+
+    def __init__(self, path=''):
+        self._path = path
+
+    def __getattr__(self, path):
+        return Chain('%s/%s' % (self._path, path))
+
+    def __str__(self):
+        return self._path</code></pre> 
+
+试试：
+<pre><code>>>> Chain().status.user.timeline.list
+'/status/user/timeline/list'</code></pre> 
+
+这样，无论API怎么变，SDK都可以根据URL实现完全动态的调用，而且，不随API的增加而改变！
+
+还有些REST API会把参数放到URL中，比如GitHub的API：
+
+<pre><code>GET /users/:user/repos</code></pre> 
+
+调用时，需要把:user替换为实际用户名。如果我们能写出这样的链式调用：
+
+<pre><code>Chain().users('michael').repos</code></pre> 
+
+就可以非常方便地调用API了。
+
+#####动态语言和静态语言最大的不同，就是函数和类的定义，不是编译时定义的，而是运行时动态创建的。
+
+#####我们把变量从内存中变成可存储或传输的过程称之为序列化，在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思。
+
+序列化之后，就可以把序列化后的内容写入磁盘，或者通过网络传输到别的机器上。
+
+#####反过来，把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。
+
+Python提供两个模块来实现序列化：cPickle和pickle。这两个模块功能是一样的，区别在于cPickle是C语言写的，速度快，pickle是纯Python写的，速度慢，跟cStringIO和StringIO一个道理。用的时候，先尝试导入cPickle，如果失败，再导入pickle
+<pre><code>try:
+    import cPickle as pickle
+except ImportError:
+    import pickle</code></pre> 
+   
+    
+#####file-like Object
+
+像open()函数返回的这种有个read()方法的对象，在Python中统称为file-like Object。除了file外，还可以是内存的字节流，网络流，自定义流等等。file-like Object不要求从特定类继承，只要写个read()方法就行。
+
+StringIO就是在内存中创建的file-like Object，常用作临时缓冲。
+
+Pickle的问题和所有其他编程语言特有的序列化问题一样，就是它只能用于Python，并且可能不同版本的Python彼此都不兼容，因此，只能用Pickle保存那些不重要的数据，不能成功地反序列化也没关系。
+
+有一点需要注意，就是反序列化得到的所有字符串对象默认都是unicode而不是str。由于JSON标准规定JSON编码是UTF-8，所以我们总是能正确地在Python的str或unicode与JSON的字符串之间转换。
+
+######Unix/Linux操作系统提供了一个fork()系统调用，它非常特殊。普通的函数调用，调用一次，返回一次，但是fork()调用一次，返回两次，因为操作系统自动把当前进程（称为父进程）复制了一份（称为子进程），然后，分别在父进程和子进程内返回。
+
+######子进程永远返回0，而父进程返回子进程的ID。这样做的理由是，一个父进程可以fork出很多子进程，所以，父进程要记下每个子进程的ID，而子进程只需要调用getppid()就可以拿到父进程的ID。
+
+######正则表达式
+编译
+当我们在Python中使用正则表达式时，re模块内部会干两件事情：
+编译正则表达式，如果正则表达式的字符串本身不合法，会报错；
+用编译后的正则表达式去匹配字符串。
+
+如果一个正则表达式要重复使用几千次，出于效率的考虑，我们可以预编译该正则表达式，接下来重复使用时就不需要编译这个步骤了，直接匹配：
+
+<pre><code>>>> import re
+# 编译:
+>>> re_telephone = re.compile(r'^(\d{3})-(\d{3,8})$')
+# 使用：
+>>> re_telephone.match('010-12345').groups()
+('010', '12345')
+>>> re_telephone.match('010-8086').groups()
+('010', '8086')</code></pre> 
+   编译后生成Regular Expression对象，由于该对象自己包含了正则表达式，所以调用对应的方法时不用给出正则字符串。
+
